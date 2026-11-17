@@ -49,3 +49,23 @@ layout = [
      sg.Button('.', size=(5, 2)),
      sg.Button('=', size=(5, 2))]
 ]
+
+# Cria a janela principal da calculadora
+window = sg.Window('Calculadora Simples', layout)
+
+# Variável que armazena a expressão digitada pelo usuário
+expressao = ""
+
+# Loop principal do programa
+# Fica executando até o usuário fechar a janela
+while True:
+
+    # Captura o evento (botão clicado) e os valores da interface
+    event, values = window.read()
+
+    # Encerra o programa ao fechar a janela
+    if event == sg.WIN_CLOSED:
+        break
+
+# Fecha a janela ao encerrar o programa
+window.close()
