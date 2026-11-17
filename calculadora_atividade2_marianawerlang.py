@@ -67,5 +67,22 @@ while True:
     if event == sg.WIN_CLOSED:
         break
 
+    # Limpa a expressão e reinicia o display
+    if event == 'C':
+        expressao = ""
+        window['-DISPLAY-'].update('0')
+
+    # Adiciona ao display o botão pressionado
+    else:
+
+        # Evita que números sejam concatenados após limpar a expressão
+        if expressao == "" and event in '0123456789':
+            expressao = event
+        else:
+            expressao += event
+
+        # Atualiza o conteúdo mostrado no display
+        window['-DISPLAY-'].update(expressao)
+
 # Fecha a janela ao encerrar o programa
 window.close()
