@@ -72,6 +72,27 @@ while True:
         expressao = ""
         window['-DISPLAY-'].update('0')
 
+    # Realiza o cálculo quando o botão "=" é pressionado
+    elif event == '=':
+        try:
+            # Converte os símbolos visuais da calculadora
+            # para os operadores aceitos pelo Python
+            calculo = expressao.replace('×', '*').replace('÷', '/')
+
+            # eval() interpreta a string como uma expressão matemática
+            resultado = eval(calculo)
+
+            # Exibe o resultado com duas casas decimais
+            window['-DISPLAY-'].update(f"{resultado:.2f}")
+
+            # Guarda o resultado para permitir novos cálculos
+            expressao = str(resultado)
+
+        except Exception:
+            # Caso haja erro (divisão por zero ou expressão inválida)
+            window['-DISPLAY-'].update('Erro!')
+            expressao = ""
+
     # Adiciona ao display o botão pressionado
     else:
 
